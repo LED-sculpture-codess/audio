@@ -1,0 +1,28 @@
+import numpy as np
+import scipy.io.wavfile as wav
+import matplotlib.pyplot as plt
+import wave
+import struct
+with wave.open('file_example_WAV_1MG.wav','r') as file:          #opening the wav file using the wave module
+	frame=file.getnframes()					#total no of frames in  the audio						
+	data = file.readframes(nframe)
+x = np.arange(nframe)     #for x-axis
+print(type(data))
+rate ,data = wav.read('file_example_WAV_1MG.wav')    #reading the data using scipy.io.wavfile module
+#data_int = struct.unpack('hhl',data)
+print(rate)
+data1 = data[:,0]	#to divide the channels into seperate graphs
+data2 = data[:,1]
+print(data2)
+print(data1)
+print(data)
+plt.subplot(211)
+plt.plot(x,data1)
+plt.ylabel('data1 info')
+plt.xlabel('sample')
+plt.subplot(212)
+plt.ylabel('data2 info')
+plt.xlabel('sample')
+plt.plot(x,data2)
+plt.show()
+#data_int = np.array(struct.unpack('hhl',data))'''
