@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import wave
 import struct
 with wave.open('file_example_WAV_1MG.wav','r') as file:          #opening the wav file using the wave module
-	frame=file.getnframes()					#total no of frames in  the audio						
+	nframe=file.getnframes()				#total no of frames in  the audio						
 	data = file.readframes(nframe)
 x = np.arange(nframe)     #for x-axis
 print(type(data))
